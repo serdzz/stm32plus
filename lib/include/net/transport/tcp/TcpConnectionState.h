@@ -30,6 +30,13 @@ namespace stm32plus {
       volatile TcpReceiveWindow rxWindow;         ///< the receive window state
       volatile bool pendingDataAck;               ///< true if there's a pending data ACK
 
+      /*
+       * Constructor
+       */
+
+      TcpConnectionState()
+        : state(TcpState::NONE) {
+      }
 
       /**
        * = operator. need this because of the volatile members. used when move the state to the closed
@@ -91,7 +98,7 @@ namespace stm32plus {
        */
 
       bool sendRstAck(NetworkUtilityObjects& netutils,uint16_t windowSize) {
-        state=TcpState::CLOSED;
+        changeState(netutils,TcpState::CLOSED);
         return sendHeaderOnly(netutils,TcpHeaderFlags::RST | TcpHeaderFlags::ACK,windowSize);
       }
 
@@ -132,6 +139,25 @@ namespace stm32plus {
 
         netutils.NetworkSendEventSender.raiseEvent(iptre);
         return iptre.succeeded;
+      }
+
+
+      /**
+       * Change the state of this connection and notify subscribers
+       * @param netutils The network utility objects
+       * @param newState The new state
+       */
+
+      void changeState(NetworkUtilityObjects& netutils,TcpState newState) {
+
+        TcpState oldState;
+
+        oldState=state;
+        state=newState;
+
+        netutils.NetworkNotificationEventSender.raiseEvent(
+            TcpConnectionStateChangedEvent(remoteAddress,remotePort,oldState,newState)
+          );
       }
     };
   }

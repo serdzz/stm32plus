@@ -1,4 +1,4 @@
-#if defined (STM32PLUS_F0_51) || defined (STM32PLUS_F0_30)
+#if defined (STM32PLUS_F0_51) || defined (STM32PLUS_F0_30) || defined (STM32PLUS_F0_42)
 /* ----------------------------------------------------------------------
 * Copyright (C) 2010-2013 ARM Limited. All rights reserved.
 *
@@ -7306,3 +7306,4 @@ void arm_rfft_fast_f32(
  * End of file.
  */
 #endif
+ 

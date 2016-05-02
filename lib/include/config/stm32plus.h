@@ -34,8 +34,8 @@
  * Verify that HSE_VALUE is defined
  */
 
-#if !defined(HSE_VALUE)
-#error "Please define HSE_VALUE to the frequency of your external oscillator in hertz"
+#if !defined(HSE_VALUE) && !defined(HSI_VALUE)
+#error "Please define HSE_VALUE or HSI_VALUE to the frequency of your external/internal oscillator in hertz"
 #endif
 
 
@@ -44,7 +44,7 @@
  */
 
 #undef STM32PLUS_BUILD
-#define STM32PLUS_BUILD 0x040100
+#define STM32PLUS_BUILD 0x040004
 
 
 /**
@@ -128,7 +128,9 @@ namespace stm32plus {
     PERIPHERAL_USART3_FULL_REMAP,   //!< PERIPHERAL_USART3_FULL_REMAP
     PERIPHERAL_UART4,               //!< PERIPHERAL_UART4
     PERIPHERAL_UART5,               //!< PERIPHERAL_UART5
-    PERIPHERAL_USART6               //!< PERIPHERAL_USART6
+    PERIPHERAL_USART6,              //!< PERIPHERAL_USART6
+    PERIPHERAL_CAN1,				        //!< PERIPHERAL_CAN1
+    PERIPHERAL_CAN2					        //!< PERIPHERAL_CAN2
   };
 
 
@@ -152,6 +154,7 @@ namespace stm32plus {
 // error provider is common to everyone
 
 #include "error/ErrorProvider.h"
+
 
 // include the customisable peripheral traits
 

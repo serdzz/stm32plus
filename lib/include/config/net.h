@@ -65,6 +65,7 @@
 #include "net/physical/ksz8051mll/KSZ8051MLL.h"
 #include "net/physical/ksz8091rna/KSZ8091RNA.h"
 #include "net/physical/dp83848c/DP83848C.h"
+#include "net/physical/lan8710a/LAN8710A.h"
 #include "net/physical/PhyHardReset.h"
 
 // data link layer
@@ -162,6 +163,7 @@
 #include "net/transport/tcp/TcpSegmentEvent.h"
 #include "net/transport/tcp/TcpTransmitWindow.h"
 #include "net/transport/tcp/TcpReceiveWindow.h"
+#include "net/transport/tcp/TcpConnectionStateChangedEvent.h"
 #include "net/transport/tcp/TcpConnectionState.h"
 #include "net/transport/tcp/TcpClosingConnectionState.h"
 #include "net/transport/tcp/TcpEvents.h"

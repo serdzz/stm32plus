@@ -1,4 +1,4 @@
-#if defined (STM32PLUS_F0_51) || defined (STM32PLUS_F0_30)
+#if defined (STM32PLUS_F0_51) || defined (STM32PLUS_F0_30) || defined (STM32PLUS_F0_42)
 /**************************************************************************//**
  * @file     core_cmFunc.h
  * @brief    CMSIS Cortex-M Core Function Access Header File
@@ -636,3 +636,4 @@ __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_FPSCR(uint32_t fps
 
 #endif /* __CORE_CMFUNC_H */
 #endif
+ 

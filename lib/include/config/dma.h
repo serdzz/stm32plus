@@ -65,6 +65,8 @@
     #include "dma/features/f1/xl_hd/DmaInterruptFeature.h"
   #elif defined(STM32PLUS_F1_CL)
     #include "dma/features/f1/cl/DmaInterruptFeature.h"
+#elif defined(STM32PLUS_F1_MD)
+#include "dma/features/f1/md/DmaInterruptFeature.h"
   #elif defined(STM32PLUS_F1_MD_VL)
     #include "dma/features/f1/mdvl/DmaInterruptFeature.h"
   #endif
@@ -196,6 +198,10 @@
   #include "dma/features/f0/I2CDmaReaderFeature.h"
   #include "dma/features/f0/I2CDmaWriterFeature.h"
   #include "dma/features/f0/AdcDmaFeature.h"
+
+#if !(defined(STM32PLUS_F0_30) || defined(STM32PLUS_F0_42))
+  #include "dma/features/f0/DacDmaWriterFeature.h"
+#endif
 
   #include "dma/features/f0/DmaPeripheralInfo.h"
 

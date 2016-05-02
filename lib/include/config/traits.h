@@ -20,11 +20,13 @@
   #include "traits/f1/hd/traits.h"
 #elif defined(STM32PLUS_F1_CL_E)
   #include "traits/f1/cl/traits.h"
+#elif defined(STM32PLUS_F1_MD)
+  #include "traits/f1/md/traits.h"
 #elif defined(STM32PLUS_F1_MD_VL)
   #include "traits/f1/mdvl/traits.h"
 #elif defined(STM32PLUS_F4)
   #include "traits/f4/traits.h"
-#elif defined(STM32PLUS_F0_51) || defined(STM32PLUS_F0_30) 
+#elif defined(STM32PLUS_F0_51) || defined(STM32PLUS_F0_30)  || defined(STM32PLUS_F0_42)
   #include "traits/f0/traits.h"
 #endif
 

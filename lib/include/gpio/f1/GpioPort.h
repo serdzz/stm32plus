@@ -53,7 +53,6 @@ namespace stm32plus {
         return (GPIO_TypeDef *)TPortAddress;
       }
 
-
     public:
 
       /**
@@ -108,6 +107,36 @@ namespace stm32plus {
 
       void write(uint16_t value) const {
         GPIO_Write((GPIO_TypeDef *)TPortAddress,value);
+      }
+
+
+      /**
+       * Get an STL compatible forward iterator pointing to the first pin
+       * @return an iterator
+       */
+
+      GpioIterator begin() {
+        return GpioIterator(_pinHandlers,_peripheralAddress,_low);
+      }
+
+
+      /**
+       * Get an STL compatible forward iterator pointing just beyond the last pin
+       * @return a forward iterator
+       */
+
+      GpioIterator end() {
+        return GpioIterator(_pinHandlers,_peripheralAddress,16);
+      }
+
+
+      /**
+       * Release PA15,PB3,PB4
+       */
+
+      static void releaseJtagPinsForGpio() {
+        RCC_APB2PeriphClockCmd(RCC_APB2ENR_AFIOEN,ENABLE);
+        GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable,ENABLE);
       }
   };
 }
